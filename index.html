@@ -3,38 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <title>Chat with Bot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-        .container { width: 100%; height: 100vh; overflow: auto; }
-        #messages { list-style-type: none; padding: 0; margin: 0; }
-        li { margin-bottom: 1rem; }
-        textarea { width: 100%; resize: vertical; }
+        /* Custom styles for the chat interface */
+        .profile-image {
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          z-index: -1;
+          opacity: 0.3;
+          filter: grayscale(100%);
+          object-fit: cover;
+        }
+
+        .message-wrapper {
+          display: flex;
+          align-items: flex-start;
+          gap: 1rem;
+          margin-top: 1rem;
+        }
+
+        .username {
+          font-size: 0.8rem;
+          font-weight: bold;
+          color: #666;
+          text-transform: uppercase;
+        }
+
+        .message {
+          background-color: #fff;
+          border-radius: 0.25rem;
+          padding: 0.75rem;
+          max-width: 70%;
+          word-break: break-all;
+        }
+
+        .message::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          z-index: -1;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+        }
+
+        .message-sent {
+          align-self: flex-end;
+        }
+
+        .message-received {
+          align-self: flex-start;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <img src="{{ profile_picture_url }}" alt="Profile Picture" class="profile-image">
         <ul id="messages"></ul>
         <form id="send-message">
+            <input type="hidden" name="profile_picture_url" value="{{ profile_picture_url }}">
             <textarea name="message" rows="1" placeholder="Type your message..."></textarea>
             <button type="submit">Send</button>
         </form>
     </div>
     <script>
-        document.getElementById("send-message").addEventListener("submit", function(e) {
-            e.preventDefault();
-            const messageInput = document.querySelector("#send-message textarea");
-            const message = messageInput.value.trim();
-            fetch("/chat?message=" + encodeURIComponent(message))
-                .then((res) => res.json())
-                .then((data) => {
-                    const messagesList = document.getElementById("messages");
-                    const newMessage = document.createElement("li");
-                    newMessage.innerHTML = data.response;
-                    messagesList.appendChild(newMessage);
-                    messageInput.value = "";
-                })
-                .catch((error) => console.log(error));
-        });
+        // ...
     </script>
 </body>
 </html>
