@@ -2,78 +2,83 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Chat with Bot</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <style>
-        /* Custom styles for the chat interface */
-        .profile-image {
-          position: absolute;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
-          z-index: -1;
-          opacity: 0.3;
-          filter: grayscale(100%);
-          object-fit: cover;
-        }
-
-        .message-wrapper {
-          display: flex;
-          align-items: flex-start;
-          gap: 1rem;
-          margin-top: 1rem;
-        }
-
-        .username {
-          font-size: 0.8rem;
-          font-weight: bold;
-          color: #666;
-          text-transform: uppercase;
-        }
-
-        .message {
-          background-color: #fff;
-          border-radius: 0.25rem;
-          padding: 0.75rem;
-          max-width: 70%;
-          word-break: break-all;
-        }
-
-        .message::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
-          z-index: -1;
-          background-repeat: no-repeat;
-          background-position: center;
-          background-size: contain;
-        }
-
-        .message-sent {
-          align-self: flex-end;
-        }
-
-        .message-received {
-          align-self: flex-start;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>My Beautiful Website</title>
 </head>
 <body>
-    <div class="container">
-        <img src="{{ profile_picture_url }}" alt="Profile Picture" class="profile-image">
+    <!-- Header section -->
+    <header id="header">
+        <div class="logo">
+            <img src="your-logo.png" alt="Your Company Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main section -->
+    <main id="main">
+        <section id="hero">
+            <h1>Welcome to Our Website</h1>
+            <p>Discover our products and services tailored to meet your unique needs.</p>
+            <button>Learn More</button>
+        </section>
+
+        <section id="features">
+            <h2>Our Features</h2>
+            <div class="feature">
+                <i class="fa fa-laptop"></i>
+                <h3>Feature 1</h3>
+                <p>Description of Feature 1</p>
+            </div>
+            <div class="feature">
+                <i class="fa fa-mobile"></i>
+                <h3>Feature 2</h3>
+                <p>Description of Feature 2</p>
+            </div>
+            <div class="feature">
+                <i class="fa fa-cog"></i>
+                <h3>Feature 3</h3>
+                <p>Description of Feature 3</p>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <h2>Testimonials</h2>
+            <div class="testimonial">
+                <p>"This is a testimonial."</p>
+                <cite>John Doe</cite>
+            </div>
+            <div class="testimonial">
+                <p>"Another testimonial."</p>
+                <cite>Jane Smith</cite>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer section -->
+    <footer id="footer">
+        <p>&copy; 2023 My Beautiful Website. All rights reserved.</p>
+    </footer>
+
+    <!-- Chatbot container -->
+    <div id="container">
+        <!-- Input field and send button -->
+        <input type="text" id="input-field" placeholder="Ask me anything!" />
+        <button id="send-btn">Send</button>
+
+        <!-- Messages container -->
         <ul id="messages"></ul>
-        <form id="send-message">
-            <input type="hidden" name="profile_picture_url" value="{{ profile_picture_url }}">
-            <textarea name="message" rows="1" placeholder="Type your message..."></textarea>
-            <button type="submit">Send</button>
-        </form>
     </div>
-    <script>
-        // ...
-    </script>
+
+    <!-- Include scripts -->
+    <script src="./scripts.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
